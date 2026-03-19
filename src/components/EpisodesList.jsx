@@ -8,7 +8,7 @@ function EpisodesList({ title, episodes, url }) {
           <li key={ep.id}>
             <p>{ep.name}</p>
             <img
-              src={url + ep.image_path}
+              src={`${url}/200${ep.image_path}`}
               alt={`Capa do episódio ${ep.name}`}
             />
           </li>

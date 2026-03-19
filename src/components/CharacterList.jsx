@@ -8,7 +8,7 @@ function CharacterList({ title, characters, url, num, phraseNum }) {
             <li key={char.id}>
               <p>{char.name}</p>
               <img
-                src={url + char.portrait_path}
+                src={`${url}/200${char.portrait_path}`}
                 alt={`Desenho do personagem ${char.name}`}
                 width={100}
               />
