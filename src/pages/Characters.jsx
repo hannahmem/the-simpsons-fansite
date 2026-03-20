@@ -12,8 +12,8 @@ function Characters() {
         <CharacterList
           title={"Characters"}
           characters={char}
-          url={"https://cdn.thesimpsonsapi.com"}
-          num={20}
+          imageUrl={"https://cdn.thesimpsonsapi.com"}
+          num={21}
           phraseNum={3}
         />
       )}

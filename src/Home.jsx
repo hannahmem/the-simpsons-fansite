@@ -23,7 +23,7 @@ function Home() {
           <CharacterList
             title={"Characters"}
             characters={data}
-            url={"https://cdn.thesimpsonsapi.com"}
+            imageUrl={"https://cdn.thesimpsonsapi.com"}
             num={6}
             phraseNum={3}
           />
@@ -36,9 +36,7 @@ function Home() {
       </section>
       <section className="episodes">
         <ul>
-          <li>
-            <Link to="/season-one">Season 1</Link>
-          </li>
+          <li>{/* <Link to={`/season-one/${data.id}"`}>Season 1</Link> */}</li>
           <li>
             <Link to="/season-two">Season 2</Link>
           </li>{" "}
