@@ -1,5 +1,6 @@
 import useFetch from "../useFetch";
 import EpisodesList from "../components/EpisodesList";
+import NavBar from "../components/NavBar";
 
 function Episodes() {
   const { data: eps, error } = useFetch(
@@ -7,6 +8,7 @@ function Episodes() {
   );
   return (
     <div>
+      <NavBar home={"Home"} characters={"Charaters"} />
       <p>{error}</p>
       {eps && (
         <div>
