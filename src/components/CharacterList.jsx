@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
+import { useState } from "react";
 
 function CharacterList({ num, phraseNum }) {
+  const [page, setPage] = useState(1);
   const { data: characters, error } = useFetch(
-    "https://thesimpsonsapi.com/api/characters",
+    `https://thesimpsonsapi.com/api/characters?page=${page}`,
   );
 
   return (
@@ -30,6 +32,13 @@ function CharacterList({ num, phraseNum }) {
             </ul>
           ))
           .slice(0, num)}
+      <div className="page-button">
+        <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
+          Previous
+        </button>
+        <span>Page {page}</span>
+        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+      </div>
     </div>
   );
 }

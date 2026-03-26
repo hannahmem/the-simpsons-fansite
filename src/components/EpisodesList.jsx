@@ -10,7 +10,6 @@ function EpisodesList({ num, button }) {
   return (
     <div className="episodes-list">
       <h2>Episodes</h2>
-      <p>Page {page}</p>
       {error && <p>{error}</p>}
 
       {episodes &&
@@ -33,10 +32,13 @@ function EpisodesList({ num, button }) {
           ))
           .slice(0, num)}
 
-      <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
-        Previous
-      </button>
-      <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+      <div className="page-button">
+        <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
+          Previous
+        </button>
+        <span>Page {page}</span>
+        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
+      </div>
     </div>
   );
 }
