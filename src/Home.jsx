@@ -1,7 +1,5 @@
 import CharacterList from "./components/CharacterList";
 import EpisodesList from "./components/EpisodesList";
-import useFetch from "./useFetch";
-// import Link from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -16,7 +14,7 @@ function Home() {
       </p>
       <div className="error-message">{/* <p>{error}</p> */}</div>
       <section className="characters">
-        <CharacterList num={6} phraseNum={3} />
+        <CharacterList num={5} phraseNum={3} />
         <Link to="/characters">View full list of characters</Link>
       </section>
       <section className="episodes">

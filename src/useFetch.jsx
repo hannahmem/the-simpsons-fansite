@@ -25,7 +25,7 @@ function useFetch(url) {
       .catch((err) => {
         setError(err.message);
       });
-  }, []);
+  }, [url]);
 
   return { data, error };
 }

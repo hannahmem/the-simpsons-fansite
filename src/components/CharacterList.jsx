@@ -11,9 +11,9 @@ function CharacterList({ num, phraseNum }) {
       {error && <p>{error}</p>}
       <h2>Characters</h2>
       {characters &&
-        characters.map((char) => (
-          <ul className="char-list">
-            {char.id < num && (
+        characters
+          .map((char) => (
+            <ul className="char-list">
               <Link to={`/character-details/${char.id}`}>
                 <li key={char.id}>
                   <p>{char.name}</p>
@@ -27,9 +27,9 @@ function CharacterList({ num, phraseNum }) {
                   <p>{char.phrases[phraseNum]}</p>
                 </li>
               </Link>
-            )}
-          </ul>
-        ))}
+            </ul>
+          ))
+          .slice(0, num)}
     </div>
   );
 }

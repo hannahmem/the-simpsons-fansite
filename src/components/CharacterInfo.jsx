@@ -13,7 +13,7 @@ function CharacterInfo() {
 
       {data && (
         <div>
-          {console.log(data)}
+          {/* {console.log(data)} */}
           <h2>{data.name}</h2>
           <img
             src={`https://cdn.thesimpsonsapi.com/200${data.portrait_path}`}
