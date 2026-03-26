@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PageButton from "./PageButton";
 
 function CharacterList({ num, phraseNum }) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => {
+    const savedPage = sessionStorage.getItem("currentCharPage");
+    return savedPage ? parseInt(savedPage) : 1;
+  });
   const { data: characters, error } = useFetch(
     `https://thesimpsonsapi.com/api/characters?page=${page}`,
   );
+
+  useEffect(() => {
+    sessionStorage.setItem("currentCharPage", page.toString());
+  }, [page]);
 
   return (
     <div className="char-container">
@@ -32,13 +40,16 @@ function CharacterList({ num, phraseNum }) {
             </ul>
           ))
           .slice(0, num)}
-      <div className="page-button">
-        <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-      </div>
+      {
+        <PageButton
+          handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}
+          handleNextBtn={() => setPage((prev) => prev + 1)}
+          page={page}
+          currentPage={"currentCharPage"}
+          text1={"Previous"}
+          text2={"Next"}
+        />
+      }
     </div>
   );
 }

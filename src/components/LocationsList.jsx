@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "../useFetch";
+import PageButton from "./PageButton";
 
 function LocationsList({ num }) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => {
+    const savedPage = sessionStorage.getItem("currentLocPage");
+    return savedPage ? parseInt(savedPage) : 1;
+  });
+
   const { data: location, error } = useFetch(
     `https://thesimpsonsapi.com/api/locations?page=${page}`,
   );
+
+  useEffect(() => {
+    sessionStorage.setItem("currentLocPage", page.toString());
+  }, [page]);
 
   return (
     <div className="location-list-container">
@@ -32,13 +41,15 @@ function LocationsList({ num }) {
             ))
             .slice(0, num)}
       </div>
-      <div className="page-button">
-        <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
-          Previous
-        </button>
-        <span>Page{page}</span>
-        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-      </div>
+      {
+        <PageButton
+          handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}
+          handleNextBtn={() => setPage((prev) => prev + 1)}
+          page={page}
+          text1={"Previous"}
+          text2={"Next"}
+        />
+      }
     </div>
   );
 }

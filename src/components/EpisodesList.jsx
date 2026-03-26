@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "../useFetch";
+import PageButton from "./PageButton";
 
-function EpisodesList({ num, button }) {
-  const [page, setPage] = useState(1);
+function EpisodesList({ num }) {
+  const [page, setPage] = useState(() => {
+    const savedPage = sessionStorage.getItem("currentEpPage");
+    return savedPage ? parseInt(savedPage) : 1;
+  });
+
   const { data: episodes, error } = useFetch(
     `https://thesimpsonsapi.com/api/episodes?page=${page}`,
   );
+
+  useEffect(() => {
+    sessionStorage.setItem("currentEpPage", page.toString());
+  }, [page]);
+
   return (
     <div className="episodes-list">
       <h2>Episodes</h2>
@@ -32,13 +42,15 @@ function EpisodesList({ num, button }) {
           ))
           .slice(0, num)}
 
-      <div className="page-button">
-        <button onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}>
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
-      </div>
+      {
+        <PageButton
+          handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}
+          handleNextBtn={() => setPage((prev) => prev + 1)}
+          page={page}
+          text1={"Previous"}
+          text2={"Next"}
+        />
+      }
     </div>
   );
 }

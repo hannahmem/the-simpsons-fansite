@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 function Episodes() {
   return (
     <div>
-      <NavBar home={"Home"} characters={"Charaters"} />
+      <NavBar home={"Home"} characters={"Charaters"} locations={"Locations"} />
 
       <div>
         <EpisodesList num={20} />
