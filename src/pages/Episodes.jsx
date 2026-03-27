@@ -5,10 +5,7 @@ function Episodes() {
   return (
     <div>
       <NavBar home={"Home"} characters={"Charaters"} locations={"Locations"} />
-
-      <div>
-        <EpisodesList num={20} />
-      </div>
+      <EpisodesList num={20} />
     </div>
   );
 }

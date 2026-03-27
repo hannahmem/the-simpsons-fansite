@@ -8,13 +8,13 @@ function CharacterInfo() {
   );
 
   return (
-    <div className="char-detail-container">
+    <div className="page-container">
       {error && <p>{error}</p>}
 
       {data && (
-        <div>
-          {/* {console.log(data)} */}
+        <div className="info-container">
           <h2>{data.name}</h2>
+          {/* {console.log(data)} */}
           <img
             src={`https://cdn.thesimpsonsapi.com/200${data.portrait_path}`}
             alt={`A drawing of ${data.name}`}

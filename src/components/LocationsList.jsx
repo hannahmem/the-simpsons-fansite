@@ -17,27 +17,27 @@ function LocationsList({ num }) {
   }, [page]);
 
   return (
-    <div className="location-list-container">
+    <div className="page-container">
       {error && <p>{error}</p>}
+      <h2>Locations</h2>
 
       <div className="list-container">
-        <h2>Locations</h2>
         {location &&
           location
             .map((loc) => (
-              <ul>
-                <li key={loc.id}>
-                  <p>{loc.name}</p>
-                  <img
-                    src={`https://cdn.thesimpsonsapi.com/200${loc.image_path}`}
-                    alt={`Desenho do local ${loc.name}`}
-                    width={250}
-                  />
-                  <br />
-                  {loc.use && loc.town && <span>{loc.use} in </span>}
-                  {loc.town && <span>{loc.town}</span>}
-                </li>
-              </ul>
+              <li key={loc.id}>
+                <h3>{loc.name}</h3>
+                <img
+                  src={`https://cdn.thesimpsonsapi.com/200${loc.image_path}`}
+                  alt={`Desenho do local ${loc.name}`}
+                  width={250}
+                />
+                <br />
+                {loc.use && loc.town && (
+                  <span className="loc-span">{loc.use} in </span>
+                )}
+                {loc.town && <span className="loc-span">{loc.town}</span>}
+              </li>
             ))
             .slice(0, num)}
       </div>

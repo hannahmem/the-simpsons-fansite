@@ -17,29 +17,30 @@ function CharacterList({ num, phraseNum }) {
   }, [page]);
 
   return (
-    <div className="char-container">
-      {error && <p>{error}</p>}
+    <div className="page-container">
       <h2>Characters</h2>
-      {characters &&
-        characters
-          .map((char) => (
-            <ul className="char-list">
+      {error && <p>{error}</p>}
+
+      <div className="list-container">
+        {characters &&
+          characters
+            .map((char) => (
               <Link to={`/character-details/${char.id}`}>
                 <li key={char.id}>
-                  <p>{char.name}</p>
+                  <h3>{char.name}</h3>
                   <img
                     src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
                     alt={`Desenho do personagem ${char.name}`}
                     width={100}
                   />
-                  <p>{char.age}</p>
+                  {char.age && <p>{char.age} years old</p>}
                   <p>{char.occupation}</p>
-                  <p>{char.phrases[phraseNum]}</p>
+                  {char.phrases && <p id="phrase">{char.phrases[phraseNum]}</p>}
                 </li>
               </Link>
-            </ul>
-          ))
-          .slice(0, num)}
+            ))
+            .slice(0, num)}
+      </div>
       {
         <PageButton
           handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}

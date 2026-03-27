@@ -7,17 +7,17 @@ function EpisodeInfo() {
     "https://thesimpsonsapi.com/api/episodes/" + id,
   );
   return (
-    <div className="ep-info-container">
+    <div className="page-container">
       {error && <p>{error}</p>}
       {ep && (
-        <div>
+        <div className="info-container">
           <h2>{ep.name}</h2>
           <img
             src={`https://cdn.thesimpsonsapi.com/500${ep.image_path}`}
             alt={`Drawing cover of the episode ${ep.name}`}
             width={400}
           />
-          <h3>
+          <h3 className="info-subtitle">
             Season {ep.season} Episode {ep.episode_number}
           </h3>
           {ep.airdate && <p>Air date: {ep.airdate}</p>}

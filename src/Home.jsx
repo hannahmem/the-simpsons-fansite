@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <>
-      <h1>The Simpsons Fanbase</h1>
-      <p>
-        Welcome to The Simpsons' fan made website
-        <br />
-        Here you can find everything about the characters and your favorite
-        episodes
-      </p>
+    <div className="page-container">
+      <div>
+        <h1>The Simpsons Fanbase</h1>
+        <p id="subtitle">
+          Welcome to The Simpsons' fan made website
+          <br />
+          Here you can find everything about the characters and your favorite
+          episodes
+        </p>
+      </div>
       <section className="characters">
         <CharacterList num={5} phraseNum={3} />
         <Link to="/characters">View full list of characters</Link>
@@ -25,7 +27,7 @@ function Home() {
         <LocationsList num={5} />
         <Link to={"/locations"}>View full list of locations</Link>
       </section>
-    </>
+    </div>
   );
 }
 

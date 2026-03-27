@@ -18,14 +18,14 @@ function EpisodesList({ num }) {
   }, [page]);
 
   return (
-    <div className="episodes-list">
+    <div className="page-container">
       <h2>Episodes</h2>
       {error && <p>{error}</p>}
 
-      {episodes &&
-        episodes
-          .map((ep) => (
-            <ul>
+      <div className="list-container">
+        {episodes &&
+          episodes
+            .map((ep) => (
               <Link to={`/episodes-details/${ep.id}`}>
                 <li key={ep.id}>
                   <p>
@@ -38,19 +38,20 @@ function EpisodesList({ num }) {
                   />
                 </li>
               </Link>
-            </ul>
-          ))
-          .slice(0, num)}
-
-      {
-        <PageButton
-          handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}
-          handleNextBtn={() => setPage((prev) => prev + 1)}
-          page={page}
-          text1={"Previous"}
-          text2={"Next"}
-        />
-      }
+            ))
+            .slice(0, num)}
+        {
+          <PageButton
+            handlePrevBtn={() =>
+              setPage((prev) => (prev > 1 ? prev - 1 : prev))
+            }
+            handleNextBtn={() => setPage((prev) => prev + 1)}
+            page={page}
+            text1={"Previous"}
+            text2={"Next"}
+          />
+        }
+      </div>
     </div>
   );
 }
