@@ -8,9 +8,11 @@ function CharacterList({ num, phraseNum }) {
     const savedPage = sessionStorage.getItem("currentCharPage");
     return savedPage ? parseInt(savedPage) : 1;
   });
-  const { data: characters, error } = useFetch(
-    `https://thesimpsonsapi.com/api/characters?page=${page}`,
-  );
+  const {
+    data: characters,
+    error,
+    isLoading,
+  } = useFetch(`https://thesimpsonsapi.com/api/characters?page=${page}`);
 
   useEffect(() => {
     sessionStorage.setItem("currentCharPage", page.toString());
@@ -18,9 +20,21 @@ function CharacterList({ num, phraseNum }) {
 
   return (
     <div className="page-container">
-      <h2>Characters</h2>
       {error && <p>{error}</p>}
+      {isLoading && (
+        <div>
+          <img
+            className="loading-img"
+            src={
+              "https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"
+            }
+            width={70}
+            alt="Loading gif"
+          />
+        </div>
+      )}
 
+      <h2>Characters</h2>
       <div className="list-container">
         {characters &&
           characters
@@ -35,7 +49,9 @@ function CharacterList({ num, phraseNum }) {
                   />
                   {char.age && <p>{char.age} years old</p>}
                   <p>{char.occupation}</p>
-                  {char.phrases && <p id="phrase">{char.phrases[phraseNum]}</p>}
+                  {char.phrases[phraseNum] && (
+                    <p id="phrase">"{char.phrases[phraseNum]}"</p>
+                  )}
                 </li>
               </Link>
             ))

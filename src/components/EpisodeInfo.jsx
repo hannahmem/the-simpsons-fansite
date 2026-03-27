@@ -3,12 +3,26 @@ import useFetch from "../useFetch";
 
 function EpisodeInfo() {
   const { id } = useParams();
-  const { data: ep, error } = useFetch(
-    "https://thesimpsonsapi.com/api/episodes/" + id,
-  );
+  const {
+    data: ep,
+    error,
+    isLoading,
+  } = useFetch("https://thesimpsonsapi.com/api/episodes/" + id);
   return (
     <div className="page-container">
       {error && <p>{error}</p>}
+      {isLoading && (
+        <div>
+          <img
+            className="loading-img"
+            src={
+              "https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"
+            }
+            width={70}
+            alt="Loading gif"
+          />
+        </div>
+      )}
       {ep && (
         <div className="info-container">
           <h2>{ep.name}</h2>

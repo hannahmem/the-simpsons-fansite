@@ -8,9 +8,11 @@ function LocationsList({ num }) {
     return savedPage ? parseInt(savedPage) : 1;
   });
 
-  const { data: location, error } = useFetch(
-    `https://thesimpsonsapi.com/api/locations?page=${page}`,
-  );
+  const {
+    data: location,
+    error,
+    isLoading,
+  } = useFetch(`https://thesimpsonsapi.com/api/locations?page=${page}`);
 
   useEffect(() => {
     sessionStorage.setItem("currentLocPage", page.toString());
@@ -19,8 +21,20 @@ function LocationsList({ num }) {
   return (
     <div className="page-container">
       {error && <p>{error}</p>}
-      <h2>Locations</h2>
+      {isLoading && (
+        <div>
+          <img
+            className="loading-img"
+            src={
+              "https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"
+            }
+            width={70}
+            alt="Loading gif"
+          />
+        </div>
+      )}
 
+      <h2>Locations</h2>
       <div className="list-container">
         {location &&
           location

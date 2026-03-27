@@ -9,9 +9,11 @@ function EpisodesList({ num }) {
     return savedPage ? parseInt(savedPage) : 1;
   });
 
-  const { data: episodes, error } = useFetch(
-    `https://thesimpsonsapi.com/api/episodes?page=${page}`,
-  );
+  const {
+    data: episodes,
+    error,
+    isLoading,
+  } = useFetch(`https://thesimpsonsapi.com/api/episodes?page=${page}`);
 
   useEffect(() => {
     sessionStorage.setItem("currentEpPage", page.toString());
@@ -19,9 +21,21 @@ function EpisodesList({ num }) {
 
   return (
     <div className="page-container">
-      <h2>Episodes</h2>
       {error && <p>{error}</p>}
+      {isLoading && (
+        <div>
+          <img
+            className="loading-img"
+            src={
+              "https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"
+            }
+            width={70}
+            alt="Loading gif"
+          />
+        </div>
+      )}
 
+      <h2>Episodes</h2>
       <div className="list-container">
         {episodes &&
           episodes
