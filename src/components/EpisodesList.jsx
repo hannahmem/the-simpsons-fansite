@@ -54,18 +54,16 @@ function EpisodesList({ num }) {
               </Link>
             ))
             .slice(0, num)}
-        {
-          <PageButton
-            handlePrevBtn={() =>
-              setPage((prev) => (prev > 1 ? prev - 1 : prev))
-            }
-            handleNextBtn={() => setPage((prev) => prev + 1)}
-            page={page}
-            text1={"Previous"}
-            text2={"Next"}
-          />
-        }
       </div>
+      {
+        <PageButton
+          handlePrevBtn={() => setPage((prev) => (prev > 1 ? prev - 1 : prev))}
+          handleNextBtn={() => setPage((prev) => prev + 1)}
+          page={page}
+          text1={"Previous"}
+          text2={"Next"}
+        />
+      }
     </div>
   );
 }

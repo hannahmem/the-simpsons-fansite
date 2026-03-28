@@ -1,3 +1,8 @@
+#logo {
+  display: block;
+  margin: auto;
+}
+
 .nav-bar {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -37,10 +42,12 @@
   padding: .5rem;
   display: flex;
   flex-flow: column wrap;
-  align-items: center;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   background-color: #F0F4F8;
   border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .list-container li:hover {
@@ -67,4 +74,89 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
+}
+
+.home-page .episodes-section {
+  background-color: #2A3F4A;
+  padding-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 0.5rem;
+}
+
+.home-page section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.home-page .list-container {
+  all: unset;
+  width: 93%;
+  overflow-x: auto;
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  align-items: center;
+  scroll-behavior:smooth ;
+  scroll-snap-type: x mandatory;
+}
+
+.home-page .list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.home-page .characters-section, .home-page .episodes-section, .home-page .locations-section {
+  position: relative;
+} 
+
+.home-page .list-container::scroll-button(*) {
+  border: none;
+  background-color: #E8B84A;
+  font-size: 1.5rem;
+  height: 50px;
+  width: 50px;
+  padding-bottom: .3em;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  opacity: 60%;
+}
+
+.home-page .list-container::scroll-button(left) {
+  content: '⏮';
+  position-area: left center;
+  left: 2%;
+}
+
+.home-page .list-container::scroll-button(right) {
+  content: '⏭';
+  right: 2%;
+}
+
+.home-page .list-container li {
+  scroll-snap-align: start;
+}
+
+.home-page .list-container li:hover {
+  scale: unset;
+}
+
+.home-page .list-container::scroll-button(*):hover {
+  opacity: 100%;
+  transition: opacity ease-in-out .3s;
+}
+
+.home-page .list-container::scroll-button(*):disabled {
+  opacity: 70%;
+}
+
+a {
+  cursor: pointer;
+}
+
+@media(max-width: 32rem) {
+  .home-page .list-container li {
+    flex: 0 0 100%;
+  }
 }
