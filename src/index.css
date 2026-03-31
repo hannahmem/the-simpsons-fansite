@@ -9,6 +9,7 @@
   --bg-secondary: #E8B84A;
   --text-primary: #FFF;
   --text-secondary: #2C3E42;
+  --btn: #00bfff;
   --alert: #D93B2C;
 }
 
@@ -44,6 +45,8 @@ h2 {
 
 h3 {
   color: var(--text-secondary);
+  margin: 0;
+  padding-bottom: .5rem;
 }
 
 p {

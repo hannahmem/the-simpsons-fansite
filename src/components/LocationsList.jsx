@@ -46,11 +46,13 @@ function LocationsList({ num }) {
                   alt={`Desenho do local ${loc.name}`}
                   width={250}
                 />
-                <br />
-                {loc.use && loc.town && (
-                  <span className="loc-span">{loc.use} in </span>
+                {loc.use && loc.town ? (
+                  <span className="loc-span">
+                    {loc.use} in {loc.town}
+                  </span>
+                ) : (
+                  <span className="loc-span">{loc.use}</span>
                 )}
-                {loc.town && <span className="loc-span">{loc.town}</span>}
               </li>
             ))
             .slice(0, num)}

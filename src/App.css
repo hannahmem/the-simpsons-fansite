@@ -1,3 +1,14 @@
+:root {
+  /* colors */
+  --bg-color: #1E3440;
+  --bg-secondary: #E8B84A;
+  --text-primary: #FFF;
+  --text-secondary: #2C3E42;
+  --btn: #00bfff;
+  --alert: #D93B2C;
+}
+
+
 #logo {
   display: block;
   margin: auto;
@@ -38,8 +49,9 @@
 }
 
 .list-container li {
-  width: 250px;
-  padding: .5rem;
+  width: 15.625em;
+  min-height: 20em;
+  padding: 1rem .5rem;
   display: flex;
   flex-flow: column wrap;
   text-align: center;
@@ -48,16 +60,64 @@
   background-color: #F0F4F8;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  gap: 1rem;;
 
   & p {
     margin: 0;
-    padding: 0.5rem 0;
   }
 }
 
 .list-container li:hover {
   scale: 1.05;
   transition: scale ease-in-out .3s;
+}
+
+.cutoff-text {
+  color: var(--text-secondary);
+  font-weight: 500;
+  --max-lines: 2;
+  --line-height: 1.4;
+  max-height: calc(var(--max-lines) * 1em * var(--line-height));
+  line-height: var(--line-height);
+
+  overflow: hidden;
+  position: relative;
+}
+
+.cutoff-text:has(+ .expand-btn:not(:checked))::before {
+  content: "";
+  position: absolute;
+  height: calc(1em * var(--line-height));
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.expand-btn {
+  appearance: none;
+  border: 1.5px solid black;
+  border-radius: .25rem;
+  cursor: pointer;
+  padding: .5em;
+  /* margin-top: 1rem; */
+}
+
+.expand-btn:hover {
+  background-color: var(--bg-secondary);
+  transition: background-color .3s ease-in-out;
+}
+
+.expand-btn::before {
+  content: "Expand";
+}
+
+.expand-btn:checked::before {
+  content: "Collapse";
+}
+
+.cutoff-text:has(+ .expand-btn:checked) {
+  max-height: none;
 }
 
 .page-button {

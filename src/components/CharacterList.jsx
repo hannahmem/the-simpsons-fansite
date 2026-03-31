@@ -39,8 +39,8 @@ function CharacterList({ num, phraseNum }) {
         {characters &&
           characters
             .map((char) => (
-              <Link to={`/character-details/${char.id}`} key={char.id}>
-                <li>
+              <li key={char.id}>
+                <Link to={`/character-details/${char.id}`}>
                   <h3>{char.name}</h3>
                   <img
                     src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
@@ -54,11 +54,17 @@ function CharacterList({ num, phraseNum }) {
                       <p>{char.age} year old</p>
                     ))}
                   <p>{char.occupation}</p>
-                  {char.phrases[phraseNum] && (
-                    <p id="phrase">"{char.phrases[phraseNum]}"</p>
-                  )}
-                </li>
-              </Link>
+                </Link>
+                {char.phrases[phraseNum] && (
+                  <p className="cutoff-text" id="phrase">
+                    "{char.phrases[phraseNum]}"
+                  </p>
+                )}
+                {char.phrases[phraseNum] &&
+                  (char.phrases[phraseNum].length > 100 ? (
+                    <input type="checkbox" className="expand-btn" />
+                  ) : null)}
+              </li>
             ))
             .slice(0, num)}
       </div>
