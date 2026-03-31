@@ -39,15 +39,20 @@ function CharacterList({ num, phraseNum }) {
         {characters &&
           characters
             .map((char) => (
-              <Link to={`/character-details/${char.id}`}>
-                <li key={char.id}>
+              <Link to={`/character-details/${char.id}`} key={char.id}>
+                <li>
                   <h3>{char.name}</h3>
                   <img
                     src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
                     alt={`Desenho do personagem ${char.name}`}
                     width={100}
                   />
-                  {char.age && <p>{char.age} years old</p>}
+                  {char.age &&
+                    (char.age > 1 ? (
+                      <p>{char.age} years old</p>
+                    ) : (
+                      <p>{char.age} year old</p>
+                    ))}
                   <p>{char.occupation}</p>
                   {char.phrases[phraseNum] && (
                     <p id="phrase">"{char.phrases[phraseNum]}"</p>

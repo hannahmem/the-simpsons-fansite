@@ -34,7 +34,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .list-container li {
@@ -48,6 +48,11 @@
   background-color: #F0F4F8;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  & p {
+    margin: 0;
+    padding: 0.5rem 0;
+  }
 }
 
 .list-container li:hover {
@@ -111,7 +116,7 @@
 
 .home-page .list-container::scroll-button(*) {
   border: none;
-  background-color: #E8B84A;
+  background-color: #00bfff;
   font-size: 1.5rem;
   height: 50px;
   width: 50px;

@@ -40,8 +40,8 @@ function EpisodesList({ num }) {
         {episodes &&
           episodes
             .map((ep) => (
-              <Link to={`/episodes-details/${ep.id}`}>
-                <li key={ep.id}>
+              <Link to={`/episodes-details/${ep.id}`} key={ep.id}>
+                <li>
                   <p>
                     Season {ep.season}: {ep.name}
                   </p>
