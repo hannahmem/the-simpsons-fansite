@@ -35,17 +35,19 @@ function CharacterList({ num, phraseNum }) {
       )}
 
       <h2>Characters</h2>
-      <div className="list-container">
+      <div className="list-container char-list">
         {characters &&
           characters
             .map((char) => (
               <li key={char.id}>
-                <Link to={`/character-details/${char.id}`}>
+                <Link
+                  to={`/character-details/${char.id}`}
+                  className="char-link">
                   <h3>{char.name}</h3>
                   <img
                     src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
                     alt={`Desenho do personagem ${char.name}`}
-                    width={100}
+                    width={120}
                   />
                   {char.age &&
                     (char.age > 1 ? (
@@ -61,7 +63,7 @@ function CharacterList({ num, phraseNum }) {
                   </p>
                 )}
                 {char.phrases[phraseNum] &&
-                  (char.phrases[phraseNum].length > 100 ? (
+                  (char.phrases[phraseNum].length > 80 ? (
                     <input type="checkbox" className="expand-btn" />
                   ) : null)}
               </li>

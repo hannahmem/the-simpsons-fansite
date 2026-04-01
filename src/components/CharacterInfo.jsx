@@ -30,13 +30,19 @@ function CharacterInfo() {
             alt={`A drawing of ${data.name}`}
           />
           <p>{data.description}</p>
-          <span>
-            First appearance: season {data.first_appearance_ep["season"]}{" "}
-            episode {data.first_appearance_ep["episode_number"]} '
-            {data.first_appearance_ep["name"]}'
-          </span>
-          {data.first_appearance_ep["airdate"] && (
-            <span>in {data.first_appearance_ep["airdate"]}</span>
+          {data.first_appearance_ep["airdate"] ? (
+            <p>
+              First appearance: season {data.first_appearance_ep["season"]}{" "}
+              episode {data.first_appearance_ep["episode_number"]} '
+              {data.first_appearance_ep["name"]}' in{" "}
+              {data.first_appearance_ep["airdate"]}
+            </p>
+          ) : (
+            <p>
+              First appearance: season {data.first_appearance_ep["season"]}{" "}
+              episode {data.first_appearance_ep["episode_number"]} '
+              {data.first_appearance_ep["name"]}'
+            </p>
           )}
         </div>
       )}

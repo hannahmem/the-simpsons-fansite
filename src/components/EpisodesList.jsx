@@ -42,14 +42,13 @@ function EpisodesList({ num }) {
             .map((ep) => (
               <Link to={`/episodes-details/${ep.id}`} key={ep.id}>
                 <li>
-                  <p>
-                    Season {ep.season}: {ep.name}
-                  </p>
+                  <p>{ep.name}</p>
                   <img
                     src={`https://cdn.thesimpsonsapi.com/200${ep.image_path}`}
                     alt={`Capa do episódio ${ep.name}`}
                     width={250}
                   />
+                  <p>Season {ep.season}</p>
                 </li>
               </Link>
             ))

@@ -15,16 +15,12 @@
 }
 
 .nav-bar {
-  width: 100%;
+  min-height: 3rem;
   margin-bottom: 1.5rem;
   display: flex;
-  gap: 0.25rem;
-  padding: 1rem;
-  align-content: center;
-}
-
-.nav-bar a {
-  padding-right: 1rem;
+  gap: 1rem;
+  padding-left: 1rem;
+  align-items: center;
 }
 
 .nav-bar a:hover {
@@ -50,21 +46,30 @@
 
 .list-container li {
   width: 15.625em;
-  min-height: 20em;
+  min-height: 23em;
   padding: 1rem .5rem;
   display: flex;
   flex-flow: column wrap;
   text-align: center;
   align-items: center;
+  align-content: center;
   justify-content: center;
   background-color: #F0F4F8;
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  gap: 1rem;;
+  gap: 1rem;
 
   & p {
     margin: 0;
   }
+}
+
+.list-container li .char-link {
+    width: 15.625em;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: .75rem;
 }
 
 .list-container li:hover {
@@ -138,7 +143,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 50%;
+}
+
+.ep-info .info-container {
+  & h3 {
+    /* border: 1px solid red; */
+    padding-top: .75rem;
+  }
+
+  & p {
+    margin: 0;
+  }
 }
 
 .home-page .episodes-section {
@@ -220,8 +237,49 @@ a {
   cursor: pointer;
 }
 
+/* .home-page .characters-section .list-container {
+  
+  & a {
+    width: 250px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: .75rem;
+  }
+  
+  
+} */
+
 @media(max-width: 32rem) {
+  .info-container {
+    width: 80%;
+
+    & img { 
+      width: 60%;
+    }
+  }
+
+  .ep-info .info-container { 
+    & img {
+      width: 100%;
+    }
+  }
+
+  .list-container li {
+    flex: 0 0 80%;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  .char-list li {
+    & img {
+      width: 60%;
+    }
+  }
+
   .home-page .list-container li {
-    flex: 0 0 100%;
+    flex: 0 0 95%;
   }
 }
