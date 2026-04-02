@@ -49,6 +49,10 @@ h3 {
   padding-bottom: .5rem;
 }
 
+h4 {
+  font-size: 1.1rem;
+}
+
 p {
   text-align: center;
 }
@@ -93,4 +97,30 @@ section {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+}
+
+@media(max-width: 32rem) {
+  p, .nav-bar a, .link-container a, span {
+    font-size: 1.2rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: xx-large;
+  }
+
+  .home-page section a {
+    font-size: 1.2rem;
+  }
 }

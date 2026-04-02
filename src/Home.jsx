@@ -25,15 +25,21 @@ function Home() {
       </div>
       <section className="characters-section">
         <CharacterList num={10} phraseNum={3} />
-        <Link to="/characters">View full list of characters</Link>
+        <Link className="view-link" to="/characters">
+          View full list of characters
+        </Link>
       </section>
       <section className="episodes-section">
         <EpisodesList num={10} />
-        <Link to={"/episodes"}>View full list of episodes</Link>
+        <Link className="view-link" to={"/episodes"}>
+          View full list of episodes
+        </Link>
       </section>
       <section className="locations-section">
         <LocationsList num={10} />
-        <Link to={"/locations"}>View full list of locations</Link>
+        <Link className="view-link" to={"/locations"}>
+          View full list of locations
+        </Link>
       </section>
     </div>
   );

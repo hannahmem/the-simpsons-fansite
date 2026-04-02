@@ -36,7 +36,7 @@ function EpisodesList({ num }) {
       )}
 
       <h2>Episodes</h2>
-      <div className="list-container">
+      <div className="link-container">
         {episodes &&
           episodes
             .map((ep) => (

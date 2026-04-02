@@ -2,17 +2,19 @@
   /* colors */
   --bg-color: #1E3440;
   --bg-secondary: #E8B84A;
+  --card: #F0F4F8;
   --text-primary: #FFF;
   --text-secondary: #2C3E42;
   --btn: #00bfff;
   --alert: #D93B2C;
 }
 
-
 #logo {
   display: block;
   margin: auto;
 }
+
+/* nav-bar specifications */
 
 .nav-bar {
   min-height: 3rem;
@@ -28,6 +30,9 @@
   transition: color ease-in-out 0.3s;
 }
 
+/* details containers -> "link-container" for episodes
+->  "list-container" for characters and locations */
+
 .page-container {
   width: 100%;
   display: flex;
@@ -37,14 +42,15 @@
   gap: 1rem;
 }
 
-.list-container {
+.list-container, .link-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   gap: 1.5rem;
 }
 
-.list-container li {
+.list-container li, 
+.link-container a {
   width: 15.625em;
   min-height: 23em;
   padding: 1rem .5rem;
@@ -54,28 +60,43 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  background-color: #F0F4F8;
+  background-color: var(--card);
   border-radius: 0.5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   gap: 1rem;
+  /* border: 1px solid red; */
 
   & p {
     margin: 0;
   }
 }
 
-.list-container li .char-link {
-    width: 15.625em;
+.link-container a {
+  color: var(--text-secondary);
+
+  & li {
     display: flex;
-    flex-flow: column wrap;
+    gap: 1rem;
+    flex-flow: row wrap;
     align-items: center;
-    gap: .75rem;
+    justify-content: center;
+  }
 }
 
-.list-container li:hover {
-  scale: 1.05;
-  transition: scale ease-in-out .3s;
+.list-container li .char-link {
+  width: 15.625em;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  gap: .75rem;
 }
+
+.list-container li:hover, .link-container a:hover {
+scale: 1.05;
+transition: scale ease-in-out .3s;
+}
+
+/* expand and collapse button to characters */
 
 .cutoff-text {
   color: var(--text-secondary);
@@ -125,19 +146,17 @@
   max-height: none;
 }
 
+/* page button */
+
 .page-button {
   text-align: center;
   display: flex;
   gap: .5rem;
   align-items: center;
+  padding-top: .5rem
 }
 
-/* #phrase {
-  max-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid green;
-} */
+/* full information for characters and episodes */
 
 .info-container {
   display: flex;
@@ -158,6 +177,8 @@
   }
 }
 
+/* custom edit for home page */
+
 .home-page .episodes-section {
   background-color: #2A3F4A;
   padding-bottom: 2rem;
@@ -171,7 +192,10 @@
   margin-bottom: 1rem;
 }
 
-.home-page .list-container {
+/* slider */
+
+.home-page .list-container, 
+.home-page .link-container {
   all: unset;
   width: 93%;
   overflow-x: auto;
@@ -183,15 +207,21 @@
   scroll-snap-type: x mandatory;
 }
 
-.home-page .list-container::-webkit-scrollbar {
+.home-page .list-container::-webkit-scrollbar, 
+.home-page .link-container::-webkit-scrollbar {
   display: none;
 }
 
-.home-page .characters-section, .home-page .episodes-section, .home-page .locations-section {
+.home-page .characters-section, 
+.home-page .episodes-section, 
+.home-page .locations-section {
   position: relative;
 } 
 
-.home-page .list-container::scroll-button(*) {
+/* scroll button native to css */
+
+.home-page .list-container::scroll-button(*), 
+.home-page .link-container::scroll-button(*) {
   border: none;
   background-color: #00bfff;
   font-size: 1.5rem;
@@ -205,50 +235,44 @@
   opacity: 60%;
 }
 
-.home-page .list-container::scroll-button(left) {
+.home-page .list-container::scroll-button(left), 
+.home-page .link-container::scroll-button(left) {
   content: '⏮';
   position-area: left center;
   left: 2%;
 }
 
-.home-page .list-container::scroll-button(right) {
+.home-page .list-container::scroll-button(right),
+.home-page .link-container::scroll-button(right) {
   content: '⏭';
   right: 2%;
 }
 
-.home-page .list-container li {
+.home-page .list-container li, 
+.home-page .link-container a {
   scroll-snap-align: start;
 }
 
-.home-page .list-container li:hover {
+.home-page .list-container li:hover, 
+.home-page .link-container a:hover {
   scale: unset;
 }
 
-.home-page .list-container::scroll-button(*):hover {
+.home-page .list-container::scroll-button(*):hover, 
+.home-page .link-container::scroll-button(*):hover {
   opacity: 100%;
   transition: opacity ease-in-out .3s;
 }
 
-.home-page .list-container::scroll-button(*):disabled {
+.home-page .list-container::scroll-button(*):disabled,
+.home-page .link-container::scroll-button(*):disabled {
   opacity: 70%;
 }
 
-a {
-  cursor: pointer;
+.home-page .view-link:hover {
+  scale: 1.1;
+  transition: scale ease-in-out .3s;
 }
-
-/* .home-page .characters-section .list-container {
-  
-  & a {
-    width: 250px;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    gap: .75rem;
-  }
-  
-  
-} */
 
 @media(max-width: 32rem) {
   .info-container {
@@ -265,7 +289,8 @@ a {
     }
   }
 
-  .list-container li {
+  .list-container li, 
+  .link-container a {
     flex: 0 0 80%;
 
     & img {
@@ -273,13 +298,31 @@ a {
     }
   }
 
+  .link-container li {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   .char-list li {
+
     & img {
       width: 60%;
     }
   }
 
-  .home-page .list-container li {
+  .home-page .list-container li, 
+  .home-page .link-container a {
     flex: 0 0 95%;
+  }
+
+  .expand-btn::before {
+    font-size: larger;
+  }
+  
+  .expand-btn:checked::before {
+    font-size: larger;
   }
 }
