@@ -197,7 +197,7 @@ transition: scale ease-in-out .3s;
 .home-page .list-container, 
 .home-page .link-container {
   all: unset;
-  width: 93%;
+  width: 92%;
   overflow-x: auto;
   display: flex;
   gap: 1em;
@@ -307,15 +307,20 @@ transition: scale ease-in-out .3s;
   }
 
   .char-list li {
+    min-height: 25em;
 
     & img {
-      width: 60%;
+      width: 50%;
     }
   }
 
   .home-page .list-container li, 
   .home-page .link-container a {
     flex: 0 0 95%;
+  }
+
+  .home-page .locations-section .list-container li {
+   min-height: 30rem;
   }
 
   .expand-btn::before {

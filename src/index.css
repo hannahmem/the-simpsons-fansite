@@ -23,7 +23,7 @@ body {
   font-family: var(--parag);
   background-color: var(--bg-color);
   color: var(--text-primary);
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .nav-bar {

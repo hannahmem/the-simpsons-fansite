@@ -38,21 +38,19 @@ function EpisodesList({ num }) {
       <h2>Episodes</h2>
       <div className="link-container">
         {episodes &&
-          episodes
-            .map((ep) => (
-              <Link to={`/episodes-details/${ep.id}`} key={ep.id}>
-                <li>
-                  <p>{ep.name}</p>
-                  <img
-                    src={`https://cdn.thesimpsonsapi.com/200${ep.image_path}`}
-                    alt={`Capa do episódio ${ep.name}`}
-                    width={250}
-                  />
-                  <p>Season {ep.season}</p>
-                </li>
-              </Link>
-            ))
-            .slice(0, num)}
+          episodes.slice(0, num).map((ep) => (
+            <Link to={`/episodes-details/${ep.id}`} key={ep.id}>
+              <li>
+                <p>{ep.name}</p>
+                <img
+                  src={`https://cdn.thesimpsonsapi.com/200${ep.image_path}`}
+                  alt={`Capa do episódio ${ep.name}`}
+                  width={250}
+                />
+                <p>Season {ep.season}</p>
+              </li>
+            </Link>
+          ))}
       </div>
       {
         <PageButton

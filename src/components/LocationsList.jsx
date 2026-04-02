@@ -37,25 +37,24 @@ function LocationsList({ num }) {
       <h2>Locations</h2>
       <div className="list-container">
         {location &&
-          location
-            .map((loc) => (
-              <li key={loc.id}>
-                <h3>{loc.name}</h3>
-                <img
-                  src={`https://cdn.thesimpsonsapi.com/200${loc.image_path}`}
-                  alt={`Desenho do local ${loc.name}`}
-                  width={250}
-                />
-                {loc.use && loc.town ? (
-                  <span className="loc-span">
-                    {loc.use} in {loc.town}
-                  </span>
-                ) : (
-                  <span className="loc-span">{loc.use}</span>
-                )}
-              </li>
-            ))
-            .slice(0, num)}
+          location.slice(0, num).map((loc) => (
+            <li key={loc.id}>
+              <h3>{loc.name}</h3>
+              <img
+                className="img-container"
+                src={`https://cdn.thesimpsonsapi.com/200${loc.image_path}`}
+                alt={`Desenho do local ${loc.name}`}
+                width={250}
+              />
+              {loc.use && loc.town ? (
+                <span className="loc-span">
+                  {loc.use} in {loc.town}
+                </span>
+              ) : (
+                <span className="loc-span">{loc.use}</span>
+              )}
+            </li>
+          ))}
       </div>
       {
         <PageButton

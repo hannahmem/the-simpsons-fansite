@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
-import { useState, useEffect } from "react";
 import PageButton from "./PageButton";
 
 function CharacterList({ num, phraseNum }) {
@@ -37,38 +37,34 @@ function CharacterList({ num, phraseNum }) {
       <h2>Characters</h2>
       <div className="list-container char-list">
         {characters &&
-          characters
-            .map((char) => (
-              <li key={char.id}>
-                <Link
-                  to={`/character-details/${char.id}`}
-                  className="char-link">
-                  <h3>{char.name}</h3>
-                  <img
-                    src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
-                    alt={`Desenho do personagem ${char.name}`}
-                    width={120}
-                  />
-                  {char.age &&
-                    (char.age > 1 ? (
-                      <p>{char.age} years old</p>
-                    ) : (
-                      <p>{char.age} year old</p>
-                    ))}
-                  <p>{char.occupation}</p>
-                </Link>
-                {char.phrases[phraseNum] && (
-                  <p className="cutoff-text" id="phrase">
-                    "{char.phrases[phraseNum]}"
-                  </p>
-                )}
-                {char.phrases[phraseNum] &&
-                  (char.phrases[phraseNum].length > 80 ? (
-                    <input type="checkbox" className="expand-btn" />
-                  ) : null)}
-              </li>
-            ))
-            .slice(0, num)}
+          characters.slice(0, num).map((char) => (
+            <li key={char.id}>
+              <Link to={`/character-details/${char.id}`} className="char-link">
+                <h3>{char.name}</h3>
+                <img
+                  src={`https://cdn.thesimpsonsapi.com/200${char.portrait_path}`}
+                  alt={`Desenho do personagem ${char.name}`}
+                  width={120}
+                />
+                {char.age &&
+                  (char.age > 1 ? (
+                    <p>{char.age} years old</p>
+                  ) : (
+                    <p>{char.age} year old</p>
+                  ))}
+                <p>{char.occupation}</p>
+              </Link>
+              {char.phrases[phraseNum] && (
+                <p className="cutoff-text" id="phrase">
+                  "{char.phrases[phraseNum]}"
+                </p>
+              )}
+              {char.phrases[phraseNum] &&
+                (char.phrases[phraseNum].length > 80 ? (
+                  <input type="checkbox" className="expand-btn" />
+                ) : null)}
+            </li>
+          ))}
       </div>
       {
         <PageButton

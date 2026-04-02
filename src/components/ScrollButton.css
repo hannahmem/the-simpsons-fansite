@@ -1,0 +1,22 @@
+.btn-visible {
+	display: block;
+	position: fixed;
+	bottom: 0;
+	right: 50%;
+	opacity: 60%;
+	font-size: 2.5rem;
+	background: unset;
+	border: none;
+	z-index: 0;
+	transform: translateX(50%);
+}
+
+.btn-visible:hover {
+	scale: 1;
+	opacity: 90%;
+	transition: opacity ease-in-out .3s;
+}
+
+.btn-hidden {
+	display: none;
+}

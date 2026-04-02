@@ -1,6 +1,7 @@
 import CharacterList from "./components/CharacterList";
 import EpisodesList from "./components/EpisodesList";
 import LocationsList from "./components/LocationsList";
+import ScrollButton from "./components/ScrollButton";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -41,6 +42,7 @@ function Home() {
           View full list of locations
         </Link>
       </section>
+      <ScrollButton />
     </div>
   );
 }
