@@ -41,7 +41,7 @@ function EpisodesList({ num }) {
           episodes.slice(0, num).map((ep) => (
             <Link to={`/episodes-details/${ep.id}`} key={ep.id}>
               <li>
-                <p>{ep.name}</p>
+                <h3>{ep.name}</h3>
                 <img
                   src={`https://cdn.thesimpsonsapi.com/200${ep.image_path}`}
                   alt={`Capa do episódio ${ep.name}`}
